@@ -26,13 +26,39 @@ public class Card {
         }
     }
 
+    public void isLine(boolean line){
+        for (int i = 0; i < numbers.length; i++) {
+            if (cheked[i] = true){
+                line = true;
+            }
+        }
+    }
+
+    public void isBingo(boolean bingo){
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[0].length; j++) {
+                if (cheked[i][j] = true) {
+                    bingo = true;
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String s = "";
+
         for (int i = 0; i < numbers.length; i++) {
+            boolean first = true;
             for (int j = 0; j < numbers[0].length; j++) {
-                 s += numbers[i][j];
+                 if (first){
+                     s += numbers[i][j];
+                     first = false;
+                 }else{
+                     s += ", " + numbers[i][j];
+                 }
             }
+            s += "\n";
         }
         return s;
     }
