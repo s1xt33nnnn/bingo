@@ -19,29 +19,41 @@ public class Card {
     public void markNumber(int numero) {
         for (int i = 0; i < numbers.length; i++) {
             for (int j = 0; j < numbers[0].length; j++) {
-                if (numero == numbers[i][j]){
+                if (numero == numbers[i][j]) {
                     cheked[i][j] = true;
                 }
             }
         }
     }
 
-    public void isLine(boolean line){
+    public boolean isLine() {
         for (int i = 0; i < numbers.length; i++) {
-            if (cheked[i] = true){
-                line = true;
-            }
-        }
-    }
-
-    public void isBingo(boolean bingo){
-        for (int i = 0; i < numbers.length; i++) {
+            int numbersMarkedOnLine = 0;
             for (int j = 0; j < numbers[0].length; j++) {
-                if (cheked[i][j] = true) {
-                    bingo = true;
+                if (cheked[i][j]) {
+                    numbersMarkedOnLine++;
+                    if (numbersMarkedOnLine == 5) {
+                        return true;
+                    }
                 }
             }
         }
+        return false;
+    }
+
+    public boolean isBingo() {
+        int numberMarkedOnCard = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[0].length; j++) {
+                if (cheked[i][j]) {
+                    numberMarkedOnCard++;
+                    if (numberMarkedOnCard == 15) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     @Override
@@ -51,12 +63,16 @@ public class Card {
         for (int i = 0; i < numbers.length; i++) {
             boolean first = true;
             for (int j = 0; j < numbers[0].length; j++) {
-                 if (first){
-                     s += numbers[i][j];
-                     first = false;
-                 }else{
-                     s += ", " + numbers[i][j];
-                 }
+                if (first) {
+                    first = false;
+                } else {
+                    s += ", ";
+                }
+                if (cheked[i][j]) {
+                    s += "[" + numbers[i][j] + "]";
+                } else {
+                    s += numbers[i][j];
+                }
             }
             s += "\n";
         }

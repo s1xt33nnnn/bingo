@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Card card = new Card(new CardsGenerator());
-        System.out.println(card);
+        Game game = new Game(6);
+        game.playForBingo();
+
     }
 }
