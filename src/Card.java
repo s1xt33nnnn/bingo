@@ -56,6 +56,22 @@ public class Card {
         return false;
     }
 
+    public int[] getMarkedNumbers() {
+        int[] markedNumbers = new int[15];
+        for (int i = 0; i < markedNumbers.length; i++) {
+            markedNumbers[i] = 0;
+        }
+        int counter = 0;
+        for (int i = 0; i < cheked.length; i++) {
+            for (int j = 0; j < cheked[0].length; j++) {
+                if (cheked[i][j]){
+                    markedNumbers;
+                    counter++;
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String s = "";
